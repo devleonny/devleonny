@@ -209,7 +209,7 @@ function itens_menu() {
 
     var divMenu = document.createElement('div')
     divMenu.id = 'menu'
-    var corpo = document.body
+    var corpo = document.getElementById('content')
 
     corpo.appendChild(divMenu)
 
