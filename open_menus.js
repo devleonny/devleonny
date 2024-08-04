@@ -187,7 +187,8 @@ var dados_paginas = {
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
         ],
         scripts: [
-            'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js'
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/login.js'
         ]
     },
     'PÁGINA INICIAL': {
@@ -353,7 +354,7 @@ function itens_menu() {
 
         a.addEventListener('click', function (event) {
             event.preventDefault();
-            console.log(dados_paginas[item])
+
             carregar_pagina(dados_paginas[item].html, dados_paginas[item].css, dados_paginas[item].scripts);
 
             if (item == 'SAIR') {
