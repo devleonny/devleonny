@@ -178,7 +178,7 @@ function carregar_pagina(html, css, scripts) {
 }
 
 var dados_paginas = {
-    inicial: {
+    'PÁGINA INICIAL': {
         html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/inicial.html',
         css: [
             'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
@@ -226,15 +226,15 @@ function itens_menu() {
 
     var acesso = JSON.parse(localStorage.getItem('acesso'))
 
-    var nomes = {
-        'PÁGINA INICIAL': carregar_pagina(dados_paginas['inicial'].html, dados_paginas['inicial'].css, dados_paginas['inicial'].scripts),
-        'CRIAR ORÇAMENTO': 'adicionar.html',
-        'ORÇAMENTOS': 'orcamentos.html',
-        'PROJETOS': 'projetos.html',
-        'COMPOSIÇÕES': 'composicoes.html',
-        'FINANCEIRO': 'financeiro.html',
-        'SAIR': 'login.html',
-    };
+    var nomes = [
+        'PÁGINA INICIAL',
+        'CRIAR ORÇAMENTO',
+        'ORÇAMENTOS',
+        'PROJETOS',
+        'COMPOSIÇÕES',
+        'FINANCEIRO',
+        'SAIR'
+    ];
 
     var menu = document.getElementById('menu');
 
@@ -264,16 +264,21 @@ function itens_menu() {
     ul.style.marginTop = '100px';
     ul.style.marginLeft = '20px'
 
-    Object.keys(nomes).forEach(function (item) {
+    nomes.forEach(function (item) {
         var li = document.createElement('li');
         var a = document.createElement('a');
         a.textContent = item;
-        a.href = nomes[item];
-        if (item == 'SAIR') {
-            a.addEventListener('click', function () {
-                localStorage.removeItem('acesso')
-            })
-        }
+        a.href = '#'; 
+    
+        a.addEventListener('click', function (event) {
+            event.preventDefault(); 
+            carregar_pagina(dados_paginas[item].html, dados_paginas[item].css, dados_paginas[item].scripts);
+            
+            if (item == 'SAIR') {
+                localStorage.removeItem('acesso');
+            }
+        });
+    
         li.appendChild(a);
         ul.appendChild(li);
     });
