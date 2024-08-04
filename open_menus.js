@@ -180,6 +180,16 @@ function carregar_pagina(htmlUrl, cssUrls, scriptUrls) {
 }
 
 var dados_paginas = {
+    'LOGIN': {
+        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/login.html',
+        css: [
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/login.css',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
+        ],
+        scripts: [
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js'
+        ]
+    },
     'PÁGINA INICIAL': {
         html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/inicial.html',
         css: [
@@ -201,6 +211,61 @@ var dados_paginas = {
             'https://raw.githubusercontent.com/devleonny/devleonny/main/dados_clientes.js',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/upload_imagens.js',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/adicionar.js'
+        ]
+    },
+    'ORÇAMENTOS':{
+        html:'https://raw.githubusercontent.com/devleonny/devleonny/main/orcamentos.js',
+        css:[
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
+        ],
+        scripts:[
+            'https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.2.1/exceljs.min.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/projetos.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/gerar_excel.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/orcamentos.js'
+        ]
+    },
+    'PROJETOS':{
+        html:'https://raw.githubusercontent.com/devleonny/devleonny/main/projetos.js',
+        css:[
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
+        ],
+        scripts:[
+            'https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.2.1/exceljs.min.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/gerar_excel.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/projetos.js'
+        ]
+    },
+    'COMPOSICOES':{
+        html:'https://raw.githubusercontent.com/devleonny/devleonny/main/composicoes.js',
+        css:[
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
+        ],
+        scripts:[
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/composicoes.js'
+        ]
+    },
+    'FINANCEIRO':{
+        html:'https://raw.githubusercontent.com/devleonny/devleonny/main/financeiro.js',
+        css:[
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
+        ],
+        scripts:[
+            'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/financeiro.js'
         ]
     }
 }
