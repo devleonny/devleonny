@@ -184,8 +184,10 @@ var dados_paginas = {
         html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/login.html',
         css: [
             'https://raw.githubusercontent.com/devleonny/devleonny/main/login.css',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
         ],
         scripts: [
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/login.js'
         ]
     },
