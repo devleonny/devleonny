@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPOSIÇÕES</title>
+    <style>
+        #nova_composicao {
+            z-index: 333;
+            position: fixed;
+            right: -100%;
+            top: 50px;
+            width: auto;
+            max-height: 80%;
+            overflow-y: auto;
+            background-color: #222;
+            border-radius: 20px;
+            transition: right 0.5s ease;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #ocultar_para_carregar {
+            width: 100%;
+        }
+
+        #nova_composicao.show {
+            right: 0;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        .scrollable-table {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        tr {
+            cursor: pointer;
+        }
+
+        td,
+        input,
+        select {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="display: flex; width: 80%; height: 5vh; margin-bottom: 5vh; align-items: center;">
+        <div>
+            <img src="./BG.png" style="height: 10vw; margin-right: 5vw;">
+        </div>
+        <input id="campo-pesquisa" placeholder="Digite algum termo aqui..."></input>
+        <img class="img_botoes" onclick="pesquisar()" src="pesquisar.png">
+        <img class="img_botoes" onclick="atualizar()" src="atualizar.png">
+        <img class="img_botoes" onclick="abrir_fechar()" src="add.png">
+        <!--botões aqui-->
+    </div>
+
+    <h1 style="display: flex; justify-content: center; align-items: center; width: 90%;">&#10070 Composições
+    </h1>
+
+    <div id="loading" style="display: none;">
+        <img src="loading.gif" style="width: 25%;">
+    </div>
+
+    <div id="ocultar_para_carregar">
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <table>
+                <thead id="cabecalho">
+                </thead>
+                <tbody id="tabela_produtos">
+                </tbody>
+            </table>
+        </div>
+
+        <div id="retangulo">
+
+            <div id="loading" style="display: none; justify-content: center; align-items: center;">
+                <img src="loading.gif" style="width: 10%;">
+            </div>
+            <div id="tabela_alterar_ocultar">
+                <div class="retangulinho">
+                    <div class="titulum">&#10070 COMPOSIÇÃO</div>
+                    <table style="width: 100%;" id="t30">
+                        <thead>
+
+                            <th>Código</th>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+
+                        </thead>
+                        <tbody id="incluir_composicoes">
+                        </tbody>
+                    </table>
+                    <img src="add.png" style="width: 3vw; cursor: pointer;" onclick="mais_item()">
+                </div>
+
+                <div class="retangulinho" style="display: flex; justify-content: center;">
+                    <button onclick="ocultarRetangulo()">Fechar</button>
+                    <button onclick="excluir_item()">Excluir item</button>
+                    <button class="salvar" onclick="autorizar_alteracao(2)">Salvar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nova Composição -->
+        <div id="nova_composicao">
+            <h2>&#10070 Criar Composição</h2>
+            <table style="margin-bottom: 5%; width: max-content;">
+                <thead>
+                    <tr>
+                        <th>Código da Composição</th>
+                        <td><label id="codigo_"></label></td>
+                    </tr>
+                    <tr>
+                        <th>Descrição</th>
+                        <td><input type="text" id="descricao_"></input></td>
+                    </tr>
+                    <tr>
+                        <th>Grupo</th>
+                        <td><select id="grupos"></select></td>
+                    </tr>
+                    <tr>
+                        <th>Tipo</th>
+                        <td><select id="tipo_">
+                                <option>SERVIÇO</option>
+                                <option>VENDA</option>
+                            </select></td>
+                    </tr>
+                </thead>
+            </table>
+            <div style="margin-bottom: 20px;">
+                <button class="salvar" onclick="autorizar_alteracao(1)">Salvar Composição</button>
+                <button onclick="abrir_fechar()" style="margin-left: 50px;">Fechar</button>
+            </div>
+        </div>
+
+        <div id="myPopup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup()">&times;</span>
+                <h2>Aviso</h2>
+                <p id="aviso_popup"></p>
+                <div id="sim_nao" style="display: none;">
+                    <div style="display: flex; align-items: center; justify-content: space-evenly;">
+                        <button id="excluir_composicao" class="salvar">Confirmar</button>
+                        <button onclick="cancelar()">Cancelar</button>
+                    </div>
+                </div>
+                <div id="sim_nao_alterar" style="display: none;">
+                    <div style="display: flex; align-items: center; justify-content: space-evenly;">
+                        <button id="alterar_composicao" class="salvar">Confirmar</button>
+                        <button onclick="cancelar()">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

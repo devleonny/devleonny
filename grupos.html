@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITENS</title>
+    <link rel="stylesheet" type="text/css" href="gcsobras.css">
+</head>
+
+<body>
+
+    <div id="menu">
+    </div>
+
+    <div id="content">
+        <div style="display: flex; width: 80%; height: 5vh;margin-bottom: 5vh; align-items: center;">
+            <div>
+                <img src="./BG.png" style="height: 10vw; margin-right: 5vw;">
+            </div>
+            <!--botões aqui-->
+        </div>
+
+        <h1 style="display: flex; justify-content: center; align-items: center; width: 90%;">&#10070 Grupos</h1>
+
+        <div>
+            <table style="margin-left: 5vw;">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+<script>
+
+    recuperar()
+    local_dados()
+
+    function local_dados() {
+
+    }
+
+    function recuperar() {
+
+        let url = 'https://script.google.com/macros/s/AKfycbx40241Ogk6vqiPxQ3RDjf4XURo3l_yG0x9j9cTNpeKIdnosEEewTnw7epPrc2Ir9EX/exec?bloco=grupos'
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar os dados');
+                }
+                return response.json();
+            })
+            .then(data => {
+
+                document.querySelector('tbody').innerHTML = ''
+
+                var dados_grupos = JSON.parse(data)
+                
+                var keys = Object.keys(dados_grupos)
+
+                keys.forEach(function(key){
+                    let tr = document.createElement('tr')
+                    let td = document.createElement('td')
+                    td.textContent = dados_grupos[key]['nome']
+                    tr.appendChild(td)
+                    document.getElementById('tabela').appendChild(tr)
+                })
+
+                localStorage.setItem('dados_grupos', JSON.stringify(dados_grupos))
+            })
+            .catch(error => {
+                console.error('Ocorreu um erro:', error);
+            });
+    }
+
+
+</script>
+<script src="./open_menus.js"></script>
+
+</html>

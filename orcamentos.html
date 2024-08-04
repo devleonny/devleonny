@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORÇAMENTOS</title>
+    <style>
+        table {
+            width: 100%;
+            vertical-align: middle;
+            margin: 0 auto;
+        }
+
+        thead {
+            z-index: 0;
+        }
+
+        .menu_top {
+            color: #151749;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            margin: 10px;
+            transition: ease-in;
+            cursor: pointer;
+        }
+
+        .menu_top:hover {
+            color: white;
+            background-color: #151749;
+        }
+
+        th:nth-child(9),
+        td:nth-child(9) {
+            width: 100px;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="content">
+        <div style="display: flex; width: 80%; height: 5vh;margin-bottom: 5vh; align-items: center;">
+            <div>
+                <img src="./BG.png" style="height: 10vw; margin-right: 5vw;">
+            </div>
+            <input id="campo-pesquisa" placeholder="Digite algum termo aqui..."></input>
+            <img class="img_botoes" src="pesquisar.png" onclick="pesquisar()">
+            <img class="img_botoes" src="atualizar.png" id="botao_atualizar" onclick="recuperar()">
+            <img class="img_botoes" src="excel.png" id="excel" onclick="salvarTabelaEmExcel()">
+            <!--botões aqui-->
+        </div>
+
+        <div id="conteudo">
+            <h1 style="display: flex; justify-content: center; align-items: center; width: 100%;">&#10070 Orçamentos
+            </h1>
+            <div style="display: flex; margin-left: 100px;">
+                <label class="menu_top" onclick="pesquisar()">&#10070 Todos</label>
+                <label class="menu_top" onclick="pesquisar('Aguardando')">&#10070 Aguardando aprovação</label>
+                <label class="menu_top" onclick="pesquisar('Aprovado')">&#10070 Aprovados</label>
+                <label class="menu_top" onclick="pesquisar('Atrasado')">&#10070 Atrasados</label>
+            </div>
+            <table id="orcamento_" style="align-items: center; margin-bottom: 10%;">
+                <thead>
+                    <tr>
+                        <th>Data Início</th>
+                        <th>Previsão Entrega</th>
+                        <th>Andamento</th>
+                        <th>Chamado</th>
+                        <th>Cliente</th>
+                        <th>Projeto</th>
+                        <th>Cidade</th>
+                        <th>Analista</th>
+                        <th>Valor</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div id="loading" style="display: none; justify-content: center; align-items: center;">
+                <img src="loading.gif" style="width: 25%;">
+            </div>
+        </div>
+    </div>
+
+    <div id="abrir_chamado" class="detalhes" style="z-index: 1000; display: none;">
+        <!--Janela dos chamados isolados-->
+        <div style="display: flex; align-items: center;">
+            <h2 style="margin-right: 20px;">&#10070</h2>
+            <h2 id="nome_chamado"></h2>
+            <button onclick="fecharTabela('abrir_chamado')" class="close-btn">&times;</button>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrapx ; align-items: center;">
+            <h2>&#10061 Total de Custo do Orçamento</h2>
+        </div>
+
+        <div style="display: flex; width: 100%;">
+            <div id="total_custo">R$ --</div>
+            <div id="total_pendente">R$ --</div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrapx ; align-items: center;">
+            <h4>&#10061 Observações | Escopo</h4>
+        </div>
+        <div style="display: flex;">
+            <div id="d_descricao_chamado_div"></div>
+            <div id="painel_descricao_chamado" style="display: none; align-items: center;">
+                <textarea id="d_descricao_textarea_chamado" style="width: 90%; padding: 5px;" rows="5"></textarea>
+                <div id="d_descricao_chamado_button">
+                    <button class="trello_button" style="height: fit-content;"
+                        onclick="salvar_descricao_chamado()">Salvar</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="align-items: center; height: auto; margin-top: 20px;">
+
+            <h4 style="display: flex; align-items: center; justify-content: space-between;">&#10061 Pagamentos neste
+                orçamento
+                <label id="abrir_formulario" onclick="abrir_formulario()" class="trello_button">Adicionar</label>
+                <label id="fechar_formulario" onclick="fechar_formulario()" class="trello_button"
+                    style="display: none;">Cancelar</label>
+            </h4>
+
+            <div id="formulario_pagamento"
+                style="display: none; width: max-content; border: 1px solid #94A0AB; padding: 5px; border-radius: 10px; margin-bottom: 20px;">
+
+                <div style="display: grid;">
+                    <label>Descrição do pagamento</label>
+                    <textarea rows="2" id="descricao_pagamento"></textarea>
+                </div>
+                <div style="display: grid;">
+                    <label>Valor</label>
+                    <input class="label_form" type="number" id="valor_pagamento">
+                </div>
+                <div style="display: grid;">
+                    <label>Data Início</label>
+                    <input type="date" class="label_form" id="inicio_pagamento">
+                </div>
+                <div style="display: grid;">
+                    <label>Data Fim</label>
+                    <input type="date" class="label_form" id="final_pagamento">
+                </div>
+                <div style="display: grid;">
+                    <label>Categoria</label>
+                    <select class="label_form" id="categoria_pagamento">
+                    </select>
+                </div>
+                <div style="display: grid;">
+                    <label>Cliente</label>
+                    <input class="label_form" type="text" id="cliente_pagamento" list="clientes">
+                    <datalist id="clientes"></datalist>
+                </div>
+
+                <button onclick="criar_pagamento()" class="trello_button">Incluir</button>
+
+            </div>
+
+            <div id="d_pagamentos"></div>
+        </div>
+
+    </div>
+
+    <div id="myPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Aviso</h2>
+            <p id="aviso_popup"></p>
+            <div id="sim_nao_orcamento" style="display: none;">
+                <button id="confirmar_exclusao_orcamento" style="background-color: green;">Confirmar</button>
+                <button onclick="closePopup()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Usuário</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <img src="LG.png" style="background-color: white; border-radius: 5px;">
+        <h2>GCS - GESTÃO DE PROJETOS</h2>
+        <div id="acesso">
+            <input type="email" placeholder="Nome Completo" id="nome_completo">
+            <input type="text" placeholder="Crie um usuário" id="usuario">
+            <input type="password" placeholder="Crie uma senha" id="senha">
+            <input type="email" placeholder="E-mail" id="email">
+            <input type="text" placeholder="Telefone" id="telefone">
+            <button onclick="acesso()">Criar</button>
+            <button onclick="voltar()">Voltar</button>
+        </div>
+        <div id="loading" style="display: none;">
+            <img src="loading.gif">
+        </div>
+    </div>
+
+    <div id="myPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('cadastro')">&times;</span>
+            <h2>Aviso</h2>
+            <p id="aviso_popup"></p>
+        </div>
+    </div>
+
+</body>
+<script src="./popup.js"></script>
+<script>
+
+    function voltar() {
+        window.location.href = 'login.html'
+    }
+
+    function acesso() {
+        document.getElementById('acesso').style.display = 'none'
+        document.getElementById('loading').style.display = 'block'
+
+        var usuario = document.getElementById('usuario').value;
+        var senha = document.getElementById('senha').value;
+        var email = document.getElementById('email').value;
+        var nome_completo = document.getElementById('nome_completo').value;
+        var telefone = document.getElementById('telefone').value;
+
+
+        let url = 'https://script.google.com/macros/s/AKfycbx40241Ogk6vqiPxQ3RDjf4XURo3l_yG0x9j9cTNpeKIdnosEEewTnw7epPrc2Ir9EX/exec?bloco=CAD*' + usuario + '*' + senha + '*' + email + '*' + nome_completo + '*' + telefone
+
+        if (usuario == "" || senha == "" || email == "") {
+            openPopup("Senha, usuário ou e-mail não informado(s)")
+            document.getElementById('acesso').style.display = 'block'
+            document.getElementById('loading').style.display = 'none'
+        } else {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao carregar os dados');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+
+                    console.log(data)
+
+                    switch (true) {
+                        case data == "Usuário já cadastrado":
+                            openPopup(data)
+                            break
+                        case data == "Cadastro realizado!":
+                            openPopup(data)
+                            break
+                        default:
+                            openPopup('Falha interna. Entre em contato com o planejamento.')
+                    }
+                    document.getElementById('acesso').style.display = 'block'
+                    document.getElementById('loading').style.display = 'none'
+
+                })
+                .catch(error => {
+                    console.error('Ocorreu um erro:', error);
+                });
+        }
+
+    }
+</script>
+
+</html>
