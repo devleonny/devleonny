@@ -187,8 +187,7 @@ var dados_paginas = {
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
         ],
         scripts: [
-            'https://raw.githubusercontent.com/devleonny/devleonny/main/login.js',
-             'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js'
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/login.js'
         ]
     },
     'PÁGINA INICIAL': {
@@ -214,13 +213,13 @@ var dados_paginas = {
             'https://raw.githubusercontent.com/devleonny/devleonny/main/adicionar.js'
         ]
     },
-    'ORÇAMENTOS':{
-        html:'https://raw.githubusercontent.com/devleonny/devleonny/main/orcamentos.js',
-        css:[
+    'ORÇAMENTOS': {
+        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/orcamentos.js',
+        css: [
             'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
         ],
-        scripts:[
+        scripts: [
             'https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.2.1/exceljs.min.js',
             'https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js',
@@ -230,13 +229,13 @@ var dados_paginas = {
             'https://raw.githubusercontent.com/devleonny/devleonny/main/orcamentos.js'
         ]
     },
-    'PROJETOS':{
-        html:'https://raw.githubusercontent.com/devleonny/devleonny/main/projetos.js',
-        css:[
+    'PROJETOS': {
+        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/projetos.js',
+        css: [
             'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
         ],
-        scripts:[
+        scripts: [
             'https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js',
             'https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.2.1/exceljs.min.js',
             'https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js',
@@ -246,25 +245,25 @@ var dados_paginas = {
             'https://raw.githubusercontent.com/devleonny/devleonny/main/projetos.js'
         ]
     },
-    'COMPOSICOES':{
-        html:'https://raw.githubusercontent.com/devleonny/devleonny/main/composicoes.js',
-        css:[
+    'COMPOSICOES': {
+        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/composicoes.js',
+        css: [
             'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
         ],
-        scripts:[
+        scripts: [
             'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.js',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/composicoes.js'
         ]
     },
-    'FINANCEIRO':{
-        html:'https://raw.githubusercontent.com/devleonny/devleonny/main/financeiro.js',
-        css:[
+    'FINANCEIRO': {
+        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/financeiro.js',
+        css: [
             'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
         ],
-        scripts:[
+        scripts: [
             'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/financeiro.js'
         ]
@@ -273,73 +272,75 @@ var dados_paginas = {
 
 function itens_menu() {
 
-    var divMenu = document.createElement('div')
-    divMenu.id = 'menu'
-    var corpo = document.getElementById('content')
+    if (document.title != 'GCS Obras') {
+        var divMenu = document.createElement('div')
+        divMenu.id = 'menu'
+        var corpo = document.getElementById('content')
 
-    corpo.appendChild(divMenu)
+        corpo.appendChild(divMenu)
 
-    var acesso = JSON.parse(localStorage.getItem('acesso'))
+        var acesso = JSON.parse(localStorage.getItem('acesso'))
 
-    var nomes = [
-        'PÁGINA INICIAL',
-        'CRIAR ORÇAMENTO',
-        'ORÇAMENTOS',
-        'PROJETOS',
-        'COMPOSIÇÕES',
-        'FINANCEIRO',
-        'SAIR'
-    ];
+        var nomes = [
+            'PÁGINA INICIAL',
+            'CRIAR ORÇAMENTO',
+            'ORÇAMENTOS',
+            'PROJETOS',
+            'COMPOSIÇÕES',
+            'FINANCEIRO',
+            'SAIR'
+        ];
 
-    var menu = document.getElementById('menu');
+        var menu = document.getElementById('menu');
 
-    var div = document.createElement('div');
-    div.id = 'menu-toggle';
-    div.innerHTML = '&#9776';
-    menu.appendChild(div);
+        var div = document.createElement('div');
+        div.id = 'menu-toggle';
+        div.innerHTML = '&#9776';
+        menu.appendChild(div);
 
-    var ul = document.createElement('ul');
-    var div = document.createElement('div')
-    var h2 = document.createElement('h2')
-    var p = document.createElement('p')
-    p.textContent = acesso.permissao
-    h2.textContent = acesso.usuario
-    h2.style.padding = '10px'
+        var ul = document.createElement('ul');
+        var div = document.createElement('div')
+        var h2 = document.createElement('h2')
+        var p = document.createElement('p')
+        p.textContent = acesso.permissao
+        h2.textContent = acesso.usuario
+        h2.style.padding = '10px'
 
-    div.style = 'margin-bottom: 20%; cursor: pointer; border: 1px solid white; padding: 10px;display: flex; justify-content: center; align-items: center; background-color: #ab0000; color: white; border-radius: 20px; width: 80%'
-    div.appendChild(h2)
-    div.appendChild(p)
-    div.addEventListener('click', function () {
-        location.href = 'perfil.html'
-    })
+        div.style = 'margin-bottom: 20%; cursor: pointer; border: 1px solid white; padding: 10px;display: flex; justify-content: center; align-items: center; background-color: #ab0000; color: white; border-radius: 20px; width: 80%'
+        div.appendChild(h2)
+        div.appendChild(p)
+        div.addEventListener('click', function () {
+            location.href = 'perfil.html'
+        })
 
-    ul.appendChild(div)
+        ul.appendChild(div)
 
-    ul.id = 'itens';
-    ul.style.marginTop = '100px';
-    ul.style.marginLeft = '20px'
+        ul.id = 'itens';
+        ul.style.marginTop = '100px';
+        ul.style.marginLeft = '20px'
 
-    nomes.forEach(function (item) {
-        var li = document.createElement('li');
-        var a = document.createElement('a');
-        a.textContent = item;
-        a.href = '#';
+        nomes.forEach(function (item) {
+            var li = document.createElement('li');
+            var a = document.createElement('a');
+            a.textContent = item;
+            a.href = '#';
 
-        a.addEventListener('click', function (event) {
-            event.preventDefault();
+            a.addEventListener('click', function (event) {
+                event.preventDefault();
 
-            carregar_pagina(dados_paginas[item].html, dados_paginas[item].css, dados_paginas[item].scripts);
+                carregar_pagina(dados_paginas[item].html, dados_paginas[item].css, dados_paginas[item].scripts);
 
-            if (item == 'SAIR') {
-                localStorage.removeItem('acesso');
-            }
+                if (item == 'SAIR') {
+                    localStorage.removeItem('acesso');
+                }
+            });
+
+            li.appendChild(a);
+            ul.appendChild(li);
         });
 
-        li.appendChild(a);
-        ul.appendChild(li);
-    });
-
-    menu.appendChild(ul);
+        menu.appendChild(ul);
+    }
 }
 
 function fecharPopup() {
