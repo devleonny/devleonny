@@ -187,7 +187,8 @@ var dados_paginas = {
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
         ],
         scripts: [
-            'https://raw.githubusercontent.com/devleonny/devleonny/main/login.js'
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/login.js',
+             'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js'
         ]
     },
     'PÁGINA INICIAL': {
