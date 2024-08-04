@@ -12,7 +12,8 @@ function verificar_login_automatico() {
     try {
         var acesso = JSON.parse(localStorage.getItem('acesso'))
         if (acesso.acesso == 'Autorizado') {
-            location.href = 'inicial.html'
+            var pagina = 'PÁGINA INICIAL'
+            carregar_pagina(dados_paginas[pagina].html, dados_paginas[pagina].css, dados_paginas[pagina].scripts);
         }
     } catch {
         console.log('Usuário deslogado')
