@@ -273,75 +273,75 @@ var dados_paginas = {
 
 function itens_menu() {
 
-    if (document.title != 'GCS Obras') {
-        var divMenu = document.createElement('div')
-        divMenu.id = 'menu'
-        var corpo = document.getElementById('content')
 
-        corpo.appendChild(divMenu)
+    var divMenu = document.createElement('div')
+    divMenu.id = 'menu'
+    var corpo = document.getElementById('content')
 
-        var acesso = JSON.parse(localStorage.getItem('acesso'))
+    corpo.appendChild(divMenu)
 
-        var nomes = [
-            'PÁGINA INICIAL',
-            'CRIAR ORÇAMENTO',
-            'ORÇAMENTOS',
-            'PROJETOS',
-            'COMPOSIÇÕES',
-            'FINANCEIRO',
-            'SAIR'
-        ];
+    var acesso = JSON.parse(localStorage.getItem('acesso'))
 
-        var menu = document.getElementById('menu');
+    var nomes = [
+        'PÁGINA INICIAL',
+        'CRIAR ORÇAMENTO',
+        'ORÇAMENTOS',
+        'PROJETOS',
+        'COMPOSIÇÕES',
+        'FINANCEIRO',
+        'SAIR'
+    ];
 
-        var div = document.createElement('div');
-        div.id = 'menu-toggle';
-        div.innerHTML = '&#9776';
-        menu.appendChild(div);
+    var menu = document.getElementById('menu');
 
-        var ul = document.createElement('ul');
-        var div = document.createElement('div')
-        var h2 = document.createElement('h2')
-        var p = document.createElement('p')
-        p.textContent = acesso.permissao
-        h2.textContent = acesso.usuario
-        h2.style.padding = '10px'
+    var div = document.createElement('div');
+    div.id = 'menu-toggle';
+    div.innerHTML = '&#9776';
+    menu.appendChild(div);
 
-        div.style = 'margin-bottom: 20%; cursor: pointer; border: 1px solid white; padding: 10px;display: flex; justify-content: center; align-items: center; background-color: #ab0000; color: white; border-radius: 20px; width: 80%'
-        div.appendChild(h2)
-        div.appendChild(p)
-        div.addEventListener('click', function () {
-            location.href = 'perfil.html'
-        })
+    var ul = document.createElement('ul');
+    var div = document.createElement('div')
+    var h2 = document.createElement('h2')
+    var p = document.createElement('p')
+    p.textContent = acesso.permissao
+    h2.textContent = acesso.usuario
+    h2.style.padding = '10px'
 
-        ul.appendChild(div)
+    div.style = 'margin-bottom: 20%; cursor: pointer; border: 1px solid white; padding: 10px;display: flex; justify-content: center; align-items: center; background-color: #ab0000; color: white; border-radius: 20px; width: 80%'
+    div.appendChild(h2)
+    div.appendChild(p)
+    div.addEventListener('click', function () {
+        location.href = 'perfil.html'
+    })
 
-        ul.id = 'itens';
-        ul.style.marginTop = '100px';
-        ul.style.marginLeft = '20px'
+    ul.appendChild(div)
 
-        nomes.forEach(function (item) {
-            var li = document.createElement('li');
-            var a = document.createElement('a');
-            a.textContent = item;
-            a.href = '#';
+    ul.id = 'itens';
+    ul.style.marginTop = '100px';
+    ul.style.marginLeft = '20px'
 
-            a.addEventListener('click', function (event) {
-                event.preventDefault();
+    nomes.forEach(function (item) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.textContent = item;
+        a.href = '#';
 
-                carregar_pagina(dados_paginas[item].html, dados_paginas[item].css, dados_paginas[item].scripts);
+        a.addEventListener('click', function (event) {
+            event.preventDefault();
 
-                if (item == 'SAIR') {
-                    localStorage.removeItem('acesso');
-                }
-            });
+            carregar_pagina(dados_paginas[item].html, dados_paginas[item].css, dados_paginas[item].scripts);
 
-            li.appendChild(a);
-            ul.appendChild(li);
+            if (item == 'SAIR') {
+                localStorage.removeItem('acesso');
+            }
         });
 
-        menu.appendChild(ul);
-    }
+        li.appendChild(a);
+        ul.appendChild(li);
+    });
+
+    menu.appendChild(ul);
+
 }
 
 function fecharPopup() {
