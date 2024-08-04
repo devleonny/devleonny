@@ -265,7 +265,9 @@ var dados_paginas = {
         ],
         scripts: [
             'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js',
-            'https://raw.githubusercontent.com/devleonny/devleonny/main/financeiro.js'
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/financeiro.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.js',
         ]
     }
 }
