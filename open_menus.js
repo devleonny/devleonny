@@ -4,6 +4,8 @@ inicializar()
 
 recuperar_itens()
 
+console.log(document.title)
+
 function unicoID() {
     var d = new Date().getTime();
     if (window.performance && typeof window.performance.now === "function") {
