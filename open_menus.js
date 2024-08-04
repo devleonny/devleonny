@@ -168,9 +168,8 @@ function carregar_pagina(htmlUrl, cssUrls, scriptUrls) {
     fetch(htmlUrl)
         .then(response => response.text())
         .then(data => {
-            const div = document.createElement('div');
-            div.innerHTML = data;
-            document.getElementById('content').appendChild(div);
+
+            document.getElementById('content').innerHTML = data
 
             cssUrls.forEach(loadAndInsertCSS);
 
