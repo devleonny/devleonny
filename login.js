@@ -57,7 +57,7 @@ function acesso() {
                         break
                     case data.acesso == "Autorizado":
                         localStorage.setItem('acesso', JSON.stringify(data))
-                        window.location.href = 'inicial.html'
+                         carregar_pagina(dados_paginas[pagina].html, dados_paginas[pagina].css, dados_paginas[pagina].scripts);
                         break
                     default:
                         openPopup('Falha interna. Entre em contato com o planejamento.')
