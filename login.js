@@ -57,6 +57,7 @@ function acesso() {
                         break
                     case data.acesso == "Autorizado":
                         localStorage.setItem('acesso', JSON.stringify(data))
+                        var pagina = 'PÁGINA INICIAL'
                         carregar_pagina(dados_paginas[pagina].html, dados_paginas[pagina].css, dados_paginas[pagina].scripts);
                         break
                     default:
