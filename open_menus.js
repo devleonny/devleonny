@@ -139,6 +139,8 @@ function dinheiro(valor) {
 
 function carregar_pagina(html, css, scripts) {
 
+    document.getElementById('content').innerHTML = ''
+
     function loadAndInsertCSS(url) {
         fetch(url)
             .then(response => response.text())
