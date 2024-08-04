@@ -188,6 +188,20 @@ var dados_paginas = {
         scripts: [
             'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js'
         ]
+    },
+    'CRIAR ORÇAMENTO': {
+        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/adicionar.html',
+        css: [
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
+        ],
+        scripts: [
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/dados_clientes.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/upload_imagens.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/adicionar.js'
+        ]
     }
 }
 
@@ -270,17 +284,18 @@ function itens_menu() {
         var li = document.createElement('li');
         var a = document.createElement('a');
         a.textContent = item;
-        a.href = '#'; 
-    
+        a.href = '#';
+
         a.addEventListener('click', function (event) {
-            event.preventDefault(); 
+            event.preventDefault();
             carregar_pagina(dados_paginas[item].html, dados_paginas[item].css, dados_paginas[item].scripts);
-            
+            console.log(dados_paginas[item].html, dados_paginas[item].css, dados_paginas[item].scripts)
+
             if (item == 'SAIR') {
                 localStorage.removeItem('acesso');
             }
         });
-    
+
         li.appendChild(a);
         ul.appendChild(li);
     });
