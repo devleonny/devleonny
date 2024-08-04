@@ -279,33 +279,6 @@ function itens_menu() {
 
     corpo.appendChild(divMenu)
 
-    // Vou meter um popup também
-
-    let divP = document.createElement('div')
-    divP.id = "popup"
-    divP.classList = "popup_alerta"
-    var div_botoes = document.createElement('div')
-    let h2P = document.createElement('h2')
-    h2P.style.textAlign = 'center'
-    h2P.id = 'mensagem'
-
-    let button_baixar = document.createElement('button')
-    button_baixar.textContent = 'Baixar'
-    button_baixar.id = 'baixar'
-
-    let buttonP = document.createElement('button')
-    buttonP.textContent = 'Fechar'
-    buttonP.addEventListener('click', function () {
-        fecharPopup()
-    })
-
-    div_botoes.style = 'display: flex; justify-content: space-evenly;'
-
-    div_botoes.append(button_baixar, buttonP)
-    divP.append(h2P, div_botoes)
-    corpo.appendChild(divP)
-    // Fim do pop up
-
     var acesso = JSON.parse(localStorage.getItem('acesso'))
 
     var nomes = [
