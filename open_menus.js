@@ -214,7 +214,7 @@ var dados_paginas = {
         ]
     },
     'ORÇAMENTOS': {
-        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/orcamentos.js',
+        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/orcamentos.html',
         css: [
             'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
@@ -230,7 +230,7 @@ var dados_paginas = {
         ]
     },
     'PROJETOS': {
-        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/projetos.js',
+        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/projetos.html',
         css: [
             'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
@@ -246,7 +246,7 @@ var dados_paginas = {
         ]
     },
     'COMPOSICOES': {
-        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/composicoes.js',
+        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/composicoes.html',
         css: [
             'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
@@ -258,7 +258,7 @@ var dados_paginas = {
         ]
     },
     'FINANCEIRO': {
-        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/financeiro.js',
+        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/financeiro.html',
         css: [
             'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
