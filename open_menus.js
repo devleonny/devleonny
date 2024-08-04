@@ -342,18 +342,6 @@ function itens_menu() {
     menu.appendChild(ul);
 }
 
-function mostrarPopup(mensagem, link) {
-    var popup = document.getElementById('popup');
-    popup.classList.add('aberto');
-    document.getElementById('mensagem').textContent = mensagem
-    var div = document.getElementById('popup')
-    var button = document.getElementById('baixar')
-    button.addEventListener('click', function () {
-        window.location.href = link;
-        fecharPopup()
-    });
-}
-
 function fecharPopup() {
     var popup = document.getElementById('popup');
     popup.classList.remove('aberto');
