@@ -128,14 +128,64 @@ function conversor(stringMonetario) {
     }
 }
 
-
-
 function dinheiro(valor) {
     if (valor === '') {
         return 'R$ 0,00';
     } else {
         valor = Number(valor);
         return 'R$ ' + valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+}
+
+function carregar_pagina(html, css, scripts) {
+
+    function loadAndInsertCSS(url) {
+        fetch(url)
+            .then(response => response.text())
+            .then(cssContent => {
+                const styleElement = document.createElement('style');
+                styleElement.textContent = cssContent;
+                document.head.appendChild(styleElement);
+            })
+            .catch(error => console.error(`Erro ao carregar o CSS ${url}:`, error));
+    }
+
+
+    function loadAndExecuteScript(url) {
+        fetch(url)
+            .then(response => response.text())
+            .then(scriptContent => {
+                const scriptElement = document.createElement('script');
+                scriptElement.textContent = scriptContent;
+                document.body.appendChild(scriptElement);
+            })
+            .catch(error => console.error(`Erro ao carregar o script ${url}:`, error));
+    }
+
+
+    fetch(htmlUrl)
+        .then(response => response.text())
+        .then(data => {
+            const div = document.createElement('div');
+            div.innerHTML = data;
+            document.getElementById('content').appendChild(div);
+
+            cssUrls.forEach(loadAndInsertCSS);
+
+            scriptUrls.forEach(loadAndExecuteScript);
+        })
+        .catch(error => console.error('Erro ao buscar a página:', error));
+}
+
+var dados_paginas = {
+    inicial: {
+        html: 'https://raw.githubusercontent.com/devleonny/devleonny/main/inicial.html',
+        css: [
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/gcsobras.css',
+        ],
+        scripts: [
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js'
+        ]
     }
 }
 
@@ -177,7 +227,7 @@ function itens_menu() {
     var acesso = JSON.parse(localStorage.getItem('acesso'))
 
     var nomes = {
-        'PÁGINA INICIAL': 'inicial.html',
+        'PÁGINA INICIAL': carregar_pagina(dados_paginas['inicial'].html, dados_paginas['inicial'].css, dados_paginas['inicial'].scripts),
         'CRIAR ORÇAMENTO': 'adicionar.html',
         'ORÇAMENTOS': 'orcamentos.html',
         'PROJETOS': 'projetos.html',
@@ -677,8 +727,6 @@ function enviar_composicao(enviar) {
     }
 }
 
-
-
 function abrir_fechar() {
     var tabela = document.getElementById('nova_composicao');
     tabela.classList.toggle('show');
@@ -693,8 +741,6 @@ function pesquisar() {
     var pesquisa = document.getElementById('campo-pesquisa').value
     local_dados(pesquisa)
 }
-
-
 
 function local_dados(pesquisa) {
     let dados_composicoes = JSON.parse(localStorage.getItem('dados_composicoes'));
@@ -775,8 +821,6 @@ function local_dados(pesquisa) {
     });
 }
 
-
-
 function alterar(linhaDados) {
 
     document.getElementById('incluir_composicoes').innerHTML = '';
@@ -797,7 +841,6 @@ function alterar(linhaDados) {
 
     document.getElementById('retangulo').style.display = 'block';
 }
-
 
 function recuperar() {
 
