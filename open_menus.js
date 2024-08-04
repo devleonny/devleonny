@@ -139,7 +139,7 @@ function dinheiro(valor) {
 
 function carregar_pagina(htmlUrl, cssUrls, scriptUrls) {
 
-    document.getElementById('content').innerHTML = ''
+    document.body.innerHTML = ''
 
     function loadAndInsertCSS(url) {
         fetch(url)
@@ -170,7 +170,7 @@ function carregar_pagina(htmlUrl, cssUrls, scriptUrls) {
         .then(data => {
             const div = document.createElement('div');
             div.innerHTML = data;
-            document.getElementById('content').appendChild(div);
+            document.body.appendChild(div);
 
             cssUrls.forEach(loadAndInsertCSS);
 
@@ -187,8 +187,7 @@ var dados_paginas = {
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
         ],
         scripts: [
-            'https://raw.githubusercontent.com/devleonny/devleonny/main/login.js',
-            'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js'
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/login.js'
         ]
     },
     'PÁGINA INICIAL': {
