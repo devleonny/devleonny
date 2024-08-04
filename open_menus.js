@@ -167,6 +167,8 @@ function carregar_pagina(htmlUrl, cssUrls, scriptUrls) {
         .then(response => response.text())
         .then(data => {
 
+            document.getElementById('content').innerHTML = ''
+
             document.getElementById('content').innerHTML = data
 
             cssUrls.forEach(loadAndInsertCSS);
