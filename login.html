@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="login-container">
+
+        <img src="LG.png" style="background-color: white; border-radius: 5px;">
+        <h2>GCS - GESTÃO DE PROJETOS</h2>
+        <div id="acesso">
+            <input type="text" placeholder="Usuário" id="usuario">
+            <input type="password" placeholder="Senha" id="senha">
+            <button onclick="acesso()">Entrar</button>
+            <button onclick="cadastro()">Primeiro acesso? Cadastre-se</button>
+        </div>
+        <div id="loading" style="display: none;">
+            <img src="loading.gif">
+        </div>
+
+    </div>
+
+    <div id="myPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Aviso</h2>
+            <p id="aviso_popup"></p>
+        </div>
+    </div>
+</body>
+</html>
