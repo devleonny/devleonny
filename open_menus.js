@@ -4,8 +4,6 @@ inicializar()
 
 recuperar_itens()
 
-console.log(document.title)
-
 function unicoID() {
     var d = new Date().getTime();
     if (window.performance && typeof window.performance.now === "function") {
@@ -189,7 +187,8 @@ var dados_paginas = {
             'https://raw.githubusercontent.com/devleonny/devleonny/main/popup.css'
         ],
         scripts: [
-            'https://raw.githubusercontent.com/devleonny/devleonny/main/login.js'
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/login.js',
+            'https://raw.githubusercontent.com/devleonny/devleonny/main/open_menus.js'
         ]
     },
     'PÁGINA INICIAL': {
